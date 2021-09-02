@@ -12,7 +12,7 @@ var firebaseConfig = {
     
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-
+  
 function getData() {firebase.database().ref("/").on('value', function(snapshot) {document.getElementById("output").innerHTML = "";snapshot.forEach(function(childSnapshot) {childKey  = childSnapshot.key;
        Room_names = childKey;
       //Start code
@@ -27,7 +27,17 @@ getData();
 
 
 function logout(){
-localStorage.getItem("user_name", user_name)
+user_name = " "
+localStorage.setItem("user_name", user_name)
 window.location = "index.html"
 
 };
+
+function addRoom(){
+      room_name = document.getElementById("room_name").value
+      localStorage.setItem("room_name", room_name)
+      firebase.database().ref("/").child(user_name).update({
+            Room_name : room_name
+})
+
+}
