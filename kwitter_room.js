@@ -22,14 +22,20 @@ var firebaseConfig = {
 function getData() {firebase.database().ref("/").on('value', function(snapshot) {document.getElementById("output").innerHTML = "";snapshot.forEach(function(childSnapshot) {childKey  = childSnapshot.key;
        Room_names = childKey;
       //Start code
+      console.log(Room_names)
 
+      row = "<div class='room_name' id="+Room_names+" onclick = 'chat(this.id)'>#"+Room_names+"</div> <br>"
+      document.getElementById("output").innerHTML += row
       //End code
       });});}
 getData();
 
 
 
-
+function chat(name){
+      localStorage.setItem("room_name", name)
+      window.location = "kwitter_page.html"
+}
 
 
 function logout(){
@@ -47,3 +53,7 @@ function addRoom(){
 })
 
 }
+
+
+
+
