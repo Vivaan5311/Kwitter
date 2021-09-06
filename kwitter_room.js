@@ -39,11 +39,11 @@ function chat(name){
 
 
 function logout(){
-user_name = " "
-localStorage.setItem("user_name", user_name)
+localStorage.removeItem("user_name")
+localStorage.removeItem("room_name")
 window.location = "index.html"
+}
 
-};
 
 function addRoom(){
       room_name = document.getElementById("room_name").value
